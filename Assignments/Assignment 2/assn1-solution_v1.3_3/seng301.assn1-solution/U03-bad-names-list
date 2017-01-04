@@ -1,0 +1,2 @@
+construct(5, 10, 25, 100; 3)
+configure([0] "Coke", 250; "water", 250; "", 250)

@@ -1,0 +1,446 @@
+\documentclass[11pt]{article}
+
+%%%%%%%%%%%%%% LATEX SAMPLE FILE %%%%%%%%%%%%%%%%
+% A line which starts with a % sign
+% is called a COMMENT. It is IGNORED
+% by the LaTeX processor.
+
+% Include math
+\usepackage{amsmath,amsthm,amssymb}
+% Include links
+\usepackage{hyperref}
+
+
+%%%%%%%%%%%%%  THEOREMS  %%%%%%%%%%%%%%%%%
+% Let's define some theorem environments
+% To use later in the paper
+\theoremstyle{plain} % other options: definition, remark
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{lemma}{Lemma}
+% By including [theorem], the lemma follows the numbering of theorem
+% e.g. Thm 1, Lemma 2, Thm 3, Thm 4, \dots
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition} % the star prevents numbering
+
+\theoremstyle{example}
+\newtheorem*{example}{Example}
+% Remarks
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+
+
+
+%%%%%%%%%%%%%%  PAGE SETUP %%%%%%%%%%%%%%%%%
+% LaTeX has big default margins
+% The following sets them to 1in
+\usepackage[margin=1.5in]{geometry}
+
+% The following sets up some headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Software Analysis and Design} % Left Header
+\rhead{\thepage} % Right Header
+\cfoot{} % Center Foot (empty)
+
+
+
+
+
+
+%%%%%%%%%%%%% SHORTCUTS %%%%%%%%%%%%%%%%%%%%
+% You can define your own shortcuts too.
+% Examples of custom commands
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\cbrt}[1]{\sqrt[3]{#1}}
+
+\begin{document}
+
+% Set up a title
+\title{SENG 301}
+\author{David Ng}
+\date{Fall 2016}
+\maketitle
+
+% This line makes a ToC
+\tableofcontents
+
+% This line starts a new page
+\eject
+
+%%%%%%%%%%%%% January 11 %%%%%%%%%%%%%%%%%%%%
+
+\section{September 13, 2016}
+
+\subsection{Software Pedagogy}
+
+Software engineering is a disciplined approach to developing software in the real world. It is the application of a disciplined approach to the development, operation, and maintenance of software, and the study of these approaches. 
+
+In real software development, we are doing more than just implementing a data structure. Scale also matters (time, lines of code, developers, market). Change is a constant reality, and conflicting goals/ideas lead to messy situations. "Software that is used is software that is changed." Every system has bugs in it. Source code is a means to communicate with other people. 
+
+Traditionally, software engineering revolves around the following:
+
+\begin{enumerate}
+	\item Models
+	\item Activities
+	\item Process (ordering and interweaving of activities)
+\end{enumerate}
+
+\subsection{Activities in Development}
+ 
+\begin{enumerate}
+
+\item What should be done? One should read description and talk to people. Also, write down the needs in some manageable form. These are known respectively as requirements elicitation (or gathering) and requirements specification. We also need to consider whether anything has been missed. Is the project realistic or self-contradictory? This is referred to as requirements analysis. 
+\item How should it be done? This is a problem of design.
+\item Do it. This is the implementation of the system. 
+\item Has it actually been done? This is the testing stage.
+
+
+
+
+\end{enumerate}
+
+
+
+Additionally, the principles of deployment, maintenance and enhancement, management, configuration, and communication (including documentation) all need to be considered. 
+
+Software development is not algorithmic. This is due to the uncertain nature of the work, and well as the need to balance external concerns. For instance, time, money, people, technical issues,, business issues, and changing environments. However, software development can still be disciplined. For instance, the identification and application of best practices, and the decision making of when and how to apply these. 
+
+
+
+
+
+
+
+
+\section{September 15, 2016}
+
+
+\subsection{Review of Object Oriented Programming}
+
+\begin{definition}
+
+Constructor has same name as class, and no return type. The constructor object is created with the new keyword. 
+
+(Two new keywords indicate two objects created).
+When out of scope, garbage collection cleans up memory. FileReader is created first, then Parser is created since it is an argument. Order of initiation or arguments not defined. Infinite objects are created. Each iteration, two objects are created. 
+
+Null is not an object, 2 objects have to exist.
+
+There are no explicit objects. They are implied by variables (p). 
+
+1 class called script processor. 
+
+String, IVendingMachineFactory, FileNotFoundException, ParseException, Parser, FileReader.
+
+Types are classes, interfaces, primitives, and arrays. That is, the number of classes with boolean.
+We note Java is a strongly typed programming language.
+
+path is a local variable, path is an argument in FileReader, path, factory and debug are formal parameters.
+
+p is used when methods are called.
+
+p is null??????????. Calling methods may lead to crash. 
+
+We note that path, factory, and debug are variables. Java, reference types all pointer, not actual object. 
+\textbf{Objects} are conceptual entities that act as metaphors for real life objects. They hold an individual identity, but this concept breaks down if you push too hard. \end{definition}
+
+Objects are discrete, whereas the real world is largely continuous. Choosing objects to use in software is an important choice. 
+
+\begin{remark}
+The source code does not mention  specific objects. "new" when executed, indicates that an object should be created. 
+\end{remark}
+
+\begin{definition}
+We can group objects into categories, thus allowing us to \textbf{classify} objects which have some common properties. Equivalently, a \textbf{class} consists of all objects that possess certain kinds of properties. 
+\end{definition}
+
+\begin{example}
+If class $Student$ has property $StudentID$, then only objects with this property can be in this class. 
+\end{example}
+
+
+\begin{example}
+If an object has property $StudentID$, this may not suffice to be in the class Student. 
+\end{example}
+
+\begin{remark}
+We note that an object can be in principle, an \textbf{instance} of a class. In fact, an object can be an instance of several classes at once. A class is \textbf{instantiated} to create an object. In Java, a class-oriented language, we are not allowed to change the class of an object. Additionally, an object may not be an instance of more than one class in Java. 
+\end{remark}
+
+\begin{definition}
+\textbf{Reference types} are things that can be pointed to. 
+\end{definition}
+
+\begin{example}
+Classes, interfaces, enumerations, annotation types, and array are examples of reference types. 
+\end{example}
+
+\begin{definition}
+\textbf{Primitive types} contain no references or pointers to the above.
+\end{definition}
+
+
+
+\begin{example}
+char, int, and boolean are examples of primitive types. 
+\end{example}
+
+
+\begin{definition}
+Class properties are realized as \textbf{fields} in Java. In C++, they are called \textbf{member variables}.
+\end{definition}
+
+Each instance of a class typically contains its own copy of the (instance) fields defined by its class. Fields can also be shared across all instances. For instance, class, fields, and static fields. We note that the driver declares no fields, but this does not mean it has no fields (It may have inherited fields).
+
+
+Formal Parameters of methods and constructors are variables with a scope only within that method or constructor. Local variables can also be defined, which have a scope only from the declaration until the end of the enclosing scope. We note that all variables have a type in Java.
+
+\begin{definition}
+The value of all fields in an object constitutes its current \textbf{state}. 
+\end{definition}
+
+A program's state includes the state of all its objects and the state of its variables. For some programs, external data is also relevant to the state. We note that state only exists at specific moments of runtime. 
+
+
+
+
+
+
+
+
+\section{September 20, 2016}
+\subsection{Modelling}
+
+\begin{definition} Every \textbf{model} is an idea or set of ideas about something. A model often discards unimportant details, while emphasizing the important details. Models must be represented through notations, words, images, etc.
+\end{definition}
+
+\begin{example}
+We can consider a commercial airliner. This is a huge and complex machine. We learn the basic principles upon which it is built (mechanics, electronics, software). We need to figure out what we want to know about it, what features affect maneuverability, and how to represent that information to inform others. 
+\end{example}
+
+We are also concerned with the level of abstraction with the amount of detail included. How much detail should be shown. What should the form of the model be? We must consider what our purpose is in creating a particular model. Is it a simple presentation for non-technical customers, is it a general presentation of ideas, is it a deep and thorough presentation of technical understanding?
+
+
+Some Considerations include the target audience, the purpose for the development of the model, and the maturity of what has been done and what is to be done moving forward. 
+
+
+
+\subsection{Software Models}
+
+Models of software are often represented as documentation. For instance, there is user documentation, and developer documentation. 
+
+\begin{remark}
+We note that source code itself can be considered a model of run-time behaviour. 
+\end{remark}
+
+It is often a common mistake to confuse models with their representations. The means of representation will always bias an understanding of a model. This is due to a model's inability to capture every aspect of a real object. 
+
+\subsection{Model Considerations}
+
+We strive to make good models. The following are some properties to avoid:
+
+\begin{itemize}
+	\item Not attempting to serve any particular purpose.
+	\item Too complex or simple for appropriate use.
+	\item Misrepresents reality through incorrect details.
+	\item Abstracts away the wrong details.
+	\item Physically implausible.
+	\item Language or communication that is unfamiliar to the target audience.
+\end{itemize}
+
+In considering whether a particular model is worthwhile, we need to consider their cost to produce, whether they permit an analysis of complex ideas, and whether they can be understood. Sometimes, developers may feel models are a waste of time, but it is important to produce jsut enough modeling as necessary.
+
+
+
+
+\subsection{Unified Modeling Language (UML)}
+
+UML is usually graphical and can be used to represent models about software. UML is descriptive rather than prescriptive. That is, there are different ways to explain things. Formal languages, such as mathematics, are self-consistent, unambiguous, and complete. It is therefore more difficult to describe fuzzier concepts. Natural languages, such as English, may be ambiguous, incomplete, and inconsistent. This makes natural languages difficult to explain crisp logical concepts in. UMLis an attempt to bridge this gap. Some details may be precise, while others are fuzzy.
+
+We have three levels of incorrectness associated with all languages. We consider the kinds of errors of UML. \textbf{Syntactic} errors for instance ask whether one is representing classes with rectangles. \textbf{Semantic} errors for instance ask whether there are loops in the inheritance hierarchy. \textbf{Conceptual} errors for instance ask whether the objects communicate the information needed to perform the computations. 
+
+\subsection{Views and Use of Diagrams}
+
+There are two main views regarding UML diagrams. There is the \textbf{structural view} and the \textbf{behavioural view}. Structural concerns how the software is divided into objects, classes, etc., and how these are related to each other. Behavioural concerns what happens at run-time to perform computations and how the objects interact. 
+
+Different diagrams are used to emphasize different aspects of a model. The same kind of diagram can be used to represent different kinds of models. For instance, the process of doing taxes manually and the process of implementing a tax program.
+
+
+\subsection{Structural Modeling}
+
+Structure diagrams are used to represent classes, relationships between types, objects, and packages. These diagrams are not used to represent run-time behaviour. 
+
+Objects are represented inside a rectangle and is underlined. Relationships between objects (called \textbf{links}) are lines between the rectangular boxes. The line may contain an arrow to clarify the relationship. A link always connects two objects exactly. Links can be unidirectional, bidirectional, or not specified. the direction indicate which object can send messages (the other object can only respond).
+
+Objects can have types, which follow the object after a colon. The type we choose to denote for an object is a modeling choice. Objects may have properties that contain values (called \textbf{slots}).
+
+Classes also use rectangles. they can be distinguished from objects since they are not followeed by a colon, and usually are not underlined. The \textbf{attributes} are properties of instances of the class and \textbf{operations} are actions that instances of the class can perform. 
+
+\begin{remark}
+We note that attributes and operations can be supressed.
+\end{remark}
+
+\subsection{Class Relationships}
+
+There are six kinds of class relationships:
+
+\begin{enumerate}
+	\item \textbf{Inheritance}
+	\item \textbf{Dependency}: A certain class depends on another if the other class is required for this class' implementation. Formal parameters, local variables, static operation invocations are all kinds of dependency relationships.
+	\item \textbf{Association}: Individual objects of one class are connected with individual objects of another class. An association generally indicates that two objects are loosely but specially related to each other. Typically, an association is indication of a field in the corresponding implementation.
+	\item \textbf{Aggregation}: Aggregation is a "Has-a" relationship that connects "whole" objects with their "parts".
+	\item \textbf{Composition}: Composition is a stronger relationship than aggregation. That is, the part has no independent existence. When the whole is destroyed, so are all the parts. 
+	\item \textbf{Containment}: Nested classes is an indication of a containment relationship.
+\end{enumerate}
+
+We note that some of the classes are stronger than others. Therefore, we use only the strongest applicable relationship. Usually, we do not use more than one relationship between two classes when one implies the other. 
+
+\begin{remark}
+Aggregation and composition are relatively uncommon, and are thus unlikely to span one's entire diagram.
+\end{remark}
+
+\subsection{Class Generalization}
+
+\begin{definition}
+\textbf{Generalization} is the inverse of specialization. A class that generalizes another means that the first is a superclass of the second, while the second class is a subclass of the first class. Specialization implies inheritance. That is, all the attributes and operations of the supertype appear within the subtype, unless marked as private (-). 
+\end{definition}
+
+
+
+\section{September 22, 2016}
+
+\subsection{Structural Modeling}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Paragraph}
+In \LaTeX, paragraphs are caused
+when two line breaks are used.
+Single line breaks are ignored.
+Hence this entire block is one paragraph.
+
+Now this is a new paragraph. If you want to
+start a new line without a new paragraph, use
+two backslashes like this:
+\\
+Now the next words will be on a new line.
+\textbf{As a general rule, use this as infrequently as possible.}
+
+You can \textbf{bold} or \textit{italicize} text.
+Try to not do so repeatedly for mechanical tasks by, e.g. using theorem environments (see Section \ref{sec:theorem}).
+
+
+\section{Math}
+Inline math is created with dollar signs,
+like $e^{i \pi} = -1$ or $\half \cdot 2 = 1$.
+
+Display math is created as follows:
+\[ \sum_{k=1}^n k^3 = \left( \sum_{k=1}^n k \right)^2. \]
+This puts the math on a new line. Remember to properly add punctuation to the end of your sentences -- display math is considered part of the sentence too!
+
+Note that the use of \verb \left(  causes the parentheses to be the correct size. Without them, get something ugly like
+\[ \sum_{k=1}^n k^3 = ( \sum_{k=1}^n k )^2. \]
+
+\subsection{Using alignment}
+Try this:
+\begin{align*}
+	\prod_{k=1}^4 \left( i-x_k \right)\left( i+x_k \right) &= P(i) \cdot P(-i) \\
+	&= \left( 1-b+d+i(c-a) \right)\left( 1-b+d-i(c-a) \right) \\
+	&= (a-c)^2 + \left( b-d-1 \right)^2. 
+\end{align*}
+
+\section{Shortcuts}
+In the beginning of the document we wrote
+\begin{verbatim}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\cbrt}[1]{\sqrt[3]{#1}}
+\end{verbatim}
+Now we can use these shortcuts.
+\[ \half + \half = 1 \text{ and } \cbrt{8} = 2. \]
+
+\section{Theorems and Proofs}
+\label{sec:theorem}
+% ^ Now we can refer to this
+Let us use the theorem environments we had in the beginning.
+\begin{definition}
+	Let $\mathbb R$ denote the set of real numbers.
+\end{definition}
+Notice how this makes the source code READABLE.
+
+\begin{theorem}
+	[Vasc's Inequality]
+	\label{thm:vasc}
+	For any $a$, $b$, $c$ we have the inequality
+	\[ \left( a^2+b^2+c^2 \right)^2 \ge 3\left( a^3b+b^3c+c^3a \right). \]
+\end{theorem}
+
+For the proof of Theorem \ref{thm:vasc}, we need the following lemma.
+
+\begin{lemma}
+	We have $\left( x+y+z \right)^2 \ge 3(xy+yz+zx)$ for any $x,y,z \in \mathbb R$.
+\end{lemma}
+\begin{proof}
+	This can be rewritten as
+	\[ \half\left( (x-y)^2+(y-z)^2+(z-x)^2 \right) \ge 0 \]
+	which is obvious.
+\end{proof}
+
+\begin{proof}
+	[Proof of Theorem \ref{thm:vasc}]
+	In the lemma, put $x=a^2-ab+bc$, $y=b^2-bc+ca$, $z=c^2-ca+ab$.
+\end{proof}
+
+\begin{remark}
+	In \autoref{thm:vasc}, equality holds if $a : b : c = \cos^2 \frac{2\pi}{7} : \cos^2 \frac{4\pi}{7} : \cos^2 \frac{6\pi}{7}$.
+	This unusual equality case makes the theorem difficult to prove.
+\end{remark}
+
+
+\section{Referencing}
+The above examples are the simplest cases.
+You can get much fancier: check out
+\href{http://en.wikibooks.org/wiki/LaTeX/Labels_and_Cross-referencing}{the Wikibooks}.
+
+\section{Numbered and Bulleted Lists}
+Here is a numbered list.
+\begin{enumerate}
+	\item The environment name is ``enumerate''.
+	\item You can nest enumerates.
+		\begin{enumerate}
+			\item Subitem
+			\item Another subitem
+		\end{enumerate}
+	\item[$2 \half$.] You can also customize any particular label.
+	\item But the labels continue onwards afterwards.
+\end{enumerate}
+
+\bigskip
+
+You can also create a bulleted list.
+\begin{itemize}
+	\item The syntax is the same as ``enumerate''.
+	\item However, we use ``itemize'' instead.
+\end{itemize}
+
+
+\end{document}
